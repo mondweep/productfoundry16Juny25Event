@@ -1,0 +1,286 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+
+# IDE and Editor directories
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+*.sublime-project
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Build outputs
+dist/
+build/
+out/
+.next/
+.nuxt/
+.cache/
+.parcel-cache/
+.turbo/
+*.tsbuildinfo
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Testing
+coverage/
+.nyc_output/
+*.lcov
+.pytest_cache/
+htmlcov/
+*.cover
+*.py,cover
+.hypothesis/
+.coverage
+.coverage.*
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+*.sql
+.swarm/memory.db
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+.cache/
+
+# Private keys and certificates
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+*.jks
+private/
+secrets/
+
+# Claude Flow specific (keeping necessary files)
+# .claude/ directory contains commands and settings that should be tracked
+# But exclude local settings
+.claude/settings.local.json
+.claude/cache/
+.claude/logs/
+.swarm/
+!.swarm/.gitkeep
+
+# Package files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Media files (if not needed in repo)
+*.mp4
+*.avi
+*.mov
+*.wmv
+*.flv
+*.mkv
+*.webm
+*.mp3
+*.wav
+*.flac
+*.aac
+
+# Large data files
+*.csv
+*.xlsx
+*.xls
+*.json
+!package.json
+!package-lock.json
+!composer.json
+!composer.lock
+!tsconfig.json
+!claude-flow.config.json
+!.mcp.json
+*.xml
+!pom.xml
+*.dat
+*.data
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Ruby
+*.gem
+*.rbc
+/.config
+/coverage/
+/InstalledFiles
+/pkg/
+/spec/reports/
+/spec/examples.txt
+/test/tmp/
+/test/version_tmp/
+/tmp/
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+*.iml
+target/
+
+# PHP
+vendor/
+composer.phar
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Serverless
+.serverless/
+
+# Firebase
+.firebase/
+.firebaserc
+
+# Next.js
+.next/
+out/
+
+# Gatsby
+.cache/
+public/
+
+# Vuepress
+.vuepress/dist
+
+# Docusaurus
+.docusaurus/
+
+# Yarn
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# Misc
+*.seed
+*.pid
+*.pid.lock
+*.tgz
+.grunt
+.lock-wscript
+.node_repl_history
+.npm
+.eslintcache
+.stylelintcache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+MANIFEST
+dist-ssr
+*.local
+
+# Backup files
+backup/
+backups/
+*.backup
+*.bk
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# MonoDevelop/Xamarin Studio
+*.userprefs
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.AppleDouble
+.LSOverride
+Icon
+.DocumentRevisions-V100
+.fseventsd
+.TemporaryItems
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
