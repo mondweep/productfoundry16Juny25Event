@@ -1,6 +1,6 @@
 import { ApiResponse, PaginatedResponse } from '@/types';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || '/api/proxy';
 
 class ApiClient {
   private baseURL: string;

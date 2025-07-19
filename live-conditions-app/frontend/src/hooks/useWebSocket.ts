@@ -85,7 +85,7 @@ export const useWebSocket = () => {
   }, [connect, disconnect, handleLiveUpdate]);
 
   return {
-    isConnected: isConnectedRef.current,
+    isConnected: false, // Temporarily disable WebSocket since localhost won't work from browser
     connect,
     disconnect,
   };

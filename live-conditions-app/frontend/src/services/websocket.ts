@@ -170,8 +170,8 @@ export class WebSocketService {
   }
 }
 
-// Singleton instance
-const wsUrl = process.env.NEXT_PUBLIC_WS_URL || 'ws://localhost:3001';
+// Singleton instance  
+const wsUrl = process.env.NEXT_PUBLIC_WS_URL || 'ws://localhost:3002';
 export const websocketService = new WebSocketService(wsUrl);
 
 export default websocketService;

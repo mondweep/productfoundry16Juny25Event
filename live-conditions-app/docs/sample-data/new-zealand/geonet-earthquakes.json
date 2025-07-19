@@ -1,0 +1,189 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "generated": "2025-07-16T19:00:00+13:00",
+    "url": "https://api.geonet.org.nz/v1/intensity?MMI=3",
+    "title": "GeoNet Earthquake Data",
+    "description": "Recent earthquakes in New Zealand region with MMI ≥ 3",
+    "count": 5,
+    "request_url": "https://api.geonet.org.nz/v1/intensity?MMI=3"
+  },
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "EPSG:4326"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [174.7762, -41.2924, 15.0]
+      },
+      "properties": {
+        "publicid": "2025p542187",
+        "eventtype": "earthquake",
+        "time": "2025-07-16T05:45:32.567Z",
+        "depth": 15.0,
+        "magnitude": 4.2,
+        "magnitudetype": "M",
+        "evaluationmethod": "automatic",
+        "evaluationstatus": "preliminary",
+        "evaluationmode": "automatic",
+        "earthmodel": "nz3drx",
+        "usedphasecount": 28,
+        "usedstationcount": 18,
+        "magnitudestationcount": 12,
+        "minimumdistance": 0.045,
+        "azimuthalgap": 89,
+        "originerror": 1.2,
+        "magnitudeuncertainty": 0.15,
+        "locality": "15 km north-east of Wellington",
+        "mmi": 4,
+        "quality": "good",
+        "intensity_observations": [
+          {
+            "location": "Wellington",
+            "mmi": 4,
+            "felt_reports": 142
+          },
+          {
+            "location": "Lower Hutt",
+            "mmi": 3,
+            "felt_reports": 67
+          },
+          {
+            "location": "Porirua",
+            "mmi": 3,
+            "felt_reports": 43
+          }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [166.8543, -45.8921, 8.5]
+      },
+      "properties": {
+        "publicid": "2025p542156",
+        "eventtype": "earthquake",
+        "time": "2025-07-16T03:22:18.234Z",
+        "depth": 8.5,
+        "magnitude": 3.8,
+        "magnitudetype": "M",
+        "evaluationmethod": "automatic",
+        "evaluationstatus": "confirmed",
+        "evaluationmode": "automatic",
+        "earthmodel": "nz3drx",
+        "usedphasecount": 22,
+        "usedstationcount": 15,
+        "magnitudestationcount": 9,
+        "minimumdistance": 0.067,
+        "azimuthalgap": 112,
+        "originerror": 1.8,
+        "magnitudeuncertainty": 0.21,
+        "locality": "65 km south-west of Te Anau",
+        "mmi": 3,
+        "quality": "good",
+        "intensity_observations": [
+          {
+            "location": "Te Anau",
+            "mmi": 3,
+            "felt_reports": 23
+          },
+          {
+            "location": "Manapouri",
+            "mmi": 2,
+            "felt_reports": 8
+          }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [178.9234, -38.7456, 145.2]
+      },
+      "properties": {
+        "publicid": "2025p542098",
+        "eventtype": "earthquake",
+        "time": "2025-07-16T01:15:47.891Z",
+        "depth": 145.2,
+        "magnitude": 5.1,
+        "magnitudetype": "M",
+        "evaluationmethod": "automatic",
+        "evaluationstatus": "confirmed",
+        "evaluationmode": "automatic",
+        "earthmodel": "nz3drx",
+        "usedphasecount": 45,
+        "usedstationcount": 32,
+        "magnitudestationcount": 28,
+        "minimumdistance": 0.123,
+        "azimuthalgap": 67,
+        "originerror": 0.9,
+        "magnitudeuncertainty": 0.12,
+        "locality": "85 km east of Gisborne",
+        "mmi": 4,
+        "quality": "best",
+        "intensity_observations": [
+          {
+            "location": "Gisborne",
+            "mmi": 4,
+            "felt_reports": 234
+          },
+          {
+            "location": "Wairoa",
+            "mmi": 3,
+            "felt_reports": 89
+          },
+          {
+            "location": "Napier",
+            "mmi": 3,
+            "felt_reports": 156
+          },
+          {
+            "location": "Hastings",
+            "mmi": 3,
+            "felt_reports": 134
+          }
+        ]
+      }
+    }
+  ],
+  "volcanic_activity": {
+    "current_alerts": [
+      {
+        "volcano": "White Island",
+        "alert_level": 2,
+        "alert_description": "Minor to moderate volcanic unrest",
+        "aviation_color": "Yellow",
+        "last_update": "2025-07-15T14:30:00+13:00",
+        "hazards": [
+          "Volcanic gas",
+          "Steam and mud",
+          "Volcanic earthquakes"
+        ]
+      },
+      {
+        "volcano": "Ruapehu",
+        "alert_level": 1,
+        "alert_description": "Minor volcanic unrest",
+        "aviation_color": "Green",
+        "last_update": "2025-07-10T09:15:00+13:00",
+        "hazards": [
+          "Crater lake temperature variations"
+        ]
+      }
+    ]
+  },
+  "network_status": {
+    "total_stations": 687,
+    "operational_stations": 672,
+    "last_telemetry": "2025-07-16T18:58:00+13:00",
+    "data_completeness": 97.8
+  }
+}

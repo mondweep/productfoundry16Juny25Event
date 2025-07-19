@@ -1,0 +1,213 @@
+{
+  "traffic_incidents": {
+    "metadata": {
+      "generated": "2025-07-16T19:00:00+13:00",
+      "source": "NZTA Waka Kotahi",
+      "url": "https://trafficnz.info/service/traffic/rest/4/incidents",
+      "description": "Current traffic incidents on New Zealand state highways",
+      "update_frequency": "Real-time",
+      "total_incidents": 8
+    },
+    "incidents": [
+      {
+        "id": "INC_20250716_001",
+        "type": "Crash",
+        "severity": "Serious",
+        "location": {
+          "highway": "SH1",
+          "region": "Auckland",
+          "description": "Northern Motorway, Silverdale offramp",
+          "coordinates": {
+            "latitude": -36.6042,
+            "longitude": 174.6594
+          }
+        },
+        "status": "Active",
+        "reported_time": "2025-07-16T18:15:00+13:00",
+        "estimated_clearance": "2025-07-16T20:30:00+13:00",
+        "description": "Multi-vehicle crash blocking right lane. Emergency services on scene. Expect delays of 45-60 minutes.",
+        "impact": {
+          "lanes_affected": 1,
+          "total_lanes": 3,
+          "delay_minutes": 50,
+          "queue_length_km": 3.2
+        },
+        "detour_info": {
+          "available": true,
+          "route": "Exit at Orewa, use Hibiscus Coast Highway to Albany",
+          "additional_time": 25
+        },
+        "emergency_services": [
+          "Police",
+          "Ambulance",
+          "Fire Service"
+        ]
+      },
+      {
+        "id": "INC_20250716_002",
+        "type": "Roadworks",
+        "severity": "Minor",
+        "location": {
+          "highway": "SH2",
+          "region": "Wellington",
+          "description": "Petone to Ngauranga Gorge, roadworks",
+          "coordinates": {
+            "latitude": -41.2234,
+            "longitude": 174.8756
+          }
+        },
+        "status": "Ongoing",
+        "reported_time": "2025-07-16T06:00:00+13:00",
+        "estimated_clearance": "2025-07-16T16:00:00+13:00",
+        "description": "Lane maintenance work in progress. Single lane operation in place.",
+        "impact": {
+          "lanes_affected": 1,
+          "total_lanes": 2,
+          "delay_minutes": 15,
+          "queue_length_km": 1.1
+        },
+        "detour_info": {
+          "available": false,
+          "route": null,
+          "additional_time": null
+        },
+        "emergency_services": []
+      },
+      {
+        "id": "INC_20250716_003",
+        "type": "Weather",
+        "severity": "Moderate",
+        "location": {
+          "highway": "SH6",
+          "region": "West Coast",
+          "description": "Franz Josef to Fox Glacier section",
+          "coordinates": {
+            "latitude": -43.4667,
+            "longitude": 170.1833
+          }
+        },
+        "status": "Active",
+        "reported_time": "2025-07-16T17:30:00+13:00",
+        "estimated_clearance": "2025-07-17T08:00:00+13:00",
+        "description": "Heavy rain causing surface flooding and reduced visibility. Drive with extreme caution.",
+        "impact": {
+          "lanes_affected": 0,
+          "total_lanes": 2,
+          "delay_minutes": 20,
+          "queue_length_km": 0
+        },
+        "detour_info": {
+          "available": false,
+          "route": "No suitable alternative route",
+          "additional_time": null
+        },
+        "emergency_services": [],
+        "weather_conditions": {
+          "rainfall_mm_per_hour": 25,
+          "visibility_meters": 150,
+          "wind_speed_kmh": 45,
+          "temperature_celsius": 8
+        }
+      },
+      {
+        "id": "INC_20250716_004",
+        "type": "Breakdown",
+        "severity": "Minor",
+        "location": {
+          "highway": "SH1",
+          "region": "Canterbury",
+          "description": "Christchurch Northern Motorway, near Kaiapoi",
+          "coordinates": {
+            "latitude": -43.3833,
+            "longitude": 172.6667
+          }
+        },
+        "status": "Clearing",
+        "reported_time": "2025-07-16T18:45:00+13:00",
+        "estimated_clearance": "2025-07-16T19:15:00+13:00",
+        "description": "Broken down truck on shoulder. Recovery vehicle en route.",
+        "impact": {
+          "lanes_affected": 0,
+          "total_lanes": 2,
+          "delay_minutes": 5,
+          "queue_length_km": 0.3
+        },
+        "detour_info": {
+          "available": false,
+          "route": null,
+          "additional_time": null
+        },
+        "emergency_services": [
+          "Recovery Service"
+        ]
+      }
+    ],
+    "travel_times": [
+      {
+        "route": "Auckland CBD to Airport",
+        "normal_time_minutes": 45,
+        "current_time_minutes": 68,
+        "delay_minutes": 23,
+        "last_updated": "2025-07-16T18:55:00+13:00"
+      },
+      {
+        "route": "Wellington to Kapiti Coast",
+        "normal_time_minutes": 50,
+        "current_time_minutes": 58,
+        "delay_minutes": 8,
+        "last_updated": "2025-07-16T18:55:00+13:00"
+      },
+      {
+        "route": "Christchurch to Timaru",
+        "normal_time_minutes": 135,
+        "current_time_minutes": 140,
+        "delay_minutes": 5,
+        "last_updated": "2025-07-16T18:55:00+13:00"
+      }
+    ],
+    "camera_feeds": [
+      {
+        "id": "CAM_AKL_001",
+        "name": "Auckland Harbour Bridge",
+        "location": {
+          "highway": "SH1",
+          "description": "Harbour Bridge - City bound"
+        },
+        "image_url": "https://traffic.nzta.govt.nz/cameras/auckland/harbourbridge_city.jpg",
+        "last_updated": "2025-07-16T18:59:30+13:00",
+        "status": "Active"
+      },
+      {
+        "id": "CAM_WLG_001",
+        "name": "Wellington Urban Motorway",
+        "location": {
+          "highway": "SH1",
+          "description": "Terrace Tunnel - North bound"
+        },
+        "image_url": "https://traffic.nzta.govt.nz/cameras/wellington/terrace_tunnel.jpg",
+        "last_updated": "2025-07-16T18:59:45+13:00",
+        "status": "Active"
+      }
+    ],
+    "variable_message_signs": [
+      {
+        "id": "VMS_AKL_001",
+        "location": {
+          "highway": "SH1",
+          "description": "Northern Motorway, Oteha Valley Road"
+        },
+        "message": "CRASH AHEAD - RIGHT LANE BLOCKED - MERGE LEFT - DELAYS 45 MIN",
+        "last_updated": "2025-07-16T18:20:00+13:00"
+      },
+      {
+        "id": "VMS_WLG_001", 
+        "location": {
+          "highway": "SH2",
+          "description": "Petone"
+        },
+        "message": "ROADWORKS - SINGLE LANE - REDUCE SPEED",
+        "last_updated": "2025-07-16T06:00:00+13:00"
+      }
+    ]
+  }
+}

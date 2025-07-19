@@ -52,11 +52,11 @@ export const useApi = () => {
   const fetchData = useCallback(async (bounds: BoundingBox) => {
     await handleApiCall(async () => {
       const [weatherRes, fireRes, floodRes, trafficRes, reportsRes] = await Promise.all([
-        apiClient.get<WeatherData[]>(`/api/weather?bounds=${JSON.stringify(bounds)}`),
-        apiClient.get<FireData[]>(`/api/fires?bounds=${JSON.stringify(bounds)}`),
-        apiClient.get<FloodData[]>(`/api/floods?bounds=${JSON.stringify(bounds)}`),
-        apiClient.get<TrafficData[]>(`/api/traffic?bounds=${JSON.stringify(bounds)}`),
-        apiClient.get<UserReport[]>(`/api/reports?bounds=${JSON.stringify(bounds)}`),
+        apiClient.get<WeatherData[]>(`/v1/weather?bounds=${JSON.stringify(bounds)}`),
+        apiClient.get<FireData[]>(`/v1/fires?bounds=${JSON.stringify(bounds)}`),
+        apiClient.get<FloodData[]>(`/v1/floods?bounds=${JSON.stringify(bounds)}`),
+        apiClient.get<TrafficData[]>(`/v1/traffic?bounds=${JSON.stringify(bounds)}`),
+        apiClient.get<UserReport[]>(`/v1/reports?bounds=${JSON.stringify(bounds)}`),
       ]);
 
       setWeatherData(weatherRes.data);
@@ -78,8 +78,8 @@ export const useApi = () => {
   // Fetch weather data
   const fetchWeatherData = useCallback(async (bounds?: BoundingBox) => {
     const endpoint = bounds 
-      ? `/api/weather?bounds=${JSON.stringify(bounds)}`
-      : '/api/weather';
+      ? `/v1/weather?bounds=${JSON.stringify(bounds)}`
+      : '/v1/weather';
     
     return handleApiCall(
       () => apiClient.get<WeatherData[]>(endpoint),
@@ -90,8 +90,8 @@ export const useApi = () => {
   // Fetch fire incidents
   const fetchFireData = useCallback(async (bounds?: BoundingBox) => {
     const endpoint = bounds 
-      ? `/api/fires?bounds=${JSON.stringify(bounds)}`
-      : '/api/fires';
+      ? `/v1/fires?bounds=${JSON.stringify(bounds)}`
+      : '/v1/fires';
     
     return handleApiCall(
       () => apiClient.get<FireData[]>(endpoint),
@@ -102,8 +102,8 @@ export const useApi = () => {
   // Fetch flood warnings
   const fetchFloodData = useCallback(async (bounds?: BoundingBox) => {
     const endpoint = bounds 
-      ? `/api/floods?bounds=${JSON.stringify(bounds)}`
-      : '/api/floods';
+      ? `/v1/floods?bounds=${JSON.stringify(bounds)}`
+      : '/v1/floods';
     
     return handleApiCall(
       () => apiClient.get<FloodData[]>(endpoint),
@@ -114,8 +114,8 @@ export const useApi = () => {
   // Fetch traffic data
   const fetchTrafficData = useCallback(async (bounds?: BoundingBox) => {
     const endpoint = bounds 
-      ? `/api/traffic?bounds=${JSON.stringify(bounds)}`
-      : '/api/traffic';
+      ? `/v1/traffic?bounds=${JSON.stringify(bounds)}`
+      : '/v1/traffic';
     
     return handleApiCall(
       () => apiClient.get<TrafficData[]>(endpoint),
@@ -126,8 +126,8 @@ export const useApi = () => {
   // Fetch user reports
   const fetchUserReports = useCallback(async (bounds?: BoundingBox) => {
     const endpoint = bounds 
-      ? `/api/reports?bounds=${JSON.stringify(bounds)}`
-      : '/api/reports';
+      ? `/v1/reports?bounds=${JSON.stringify(bounds)}`
+      : '/v1/reports';
     
     return handleApiCall(
       () => apiClient.get<UserReport[]>(endpoint),

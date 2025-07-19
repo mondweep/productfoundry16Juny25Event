@@ -1,0 +1,232 @@
+{
+  "marine_conditions": {
+    "metadata": {
+      "generated": "2025-07-16T06:00:00+10:00",
+      "source": "Bureau of Meteorology",
+      "forecast_area": "Sydney Waters",
+      "issue_time": "2025-07-16T05:30:00+10:00",
+      "valid_from": "2025-07-16T06:00:00+10:00",
+      "valid_to": "2025-07-17T06:00:00+10:00",
+      "next_update": "2025-07-16T17:30:00+10:00"
+    },
+    "current_conditions": {
+      "observation_time": "2025-07-16T05:45:00+10:00",
+      "location": "Sydney Harbour - Fort Denison",
+      "coordinates": {
+        "latitude": -33.8573,
+        "longitude": 151.2279
+      },
+      "wind": {
+        "direction": "Southwest",
+        "speed_knots": 18,
+        "speed_kmh": 33,
+        "gusts_knots": 25,
+        "gusts_kmh": 46
+      },
+      "waves": {
+        "significant_height_meters": 1.5,
+        "maximum_height_meters": 2.2,
+        "period_seconds": 8,
+        "direction": "Southeast"
+      },
+      "swell": {
+        "primary": {
+          "height_meters": 1.2,
+          "period_seconds": 9,
+          "direction": "Southeast"
+        },
+        "secondary": {
+          "height_meters": 0.8,
+          "period_seconds": 6,
+          "direction": "East"
+        }
+      },
+      "sea_state": "Moderate",
+      "visibility_nautical_miles": 15,
+      "barometric_pressure_hpa": 1019.2,
+      "air_temperature_celsius": 12.5,
+      "water_temperature_celsius": 16.8,
+      "tide": {
+        "current_height_meters": 0.8,
+        "status": "Rising",
+        "next_high": {
+          "time": "2025-07-16T12:34:00+10:00",
+          "height_meters": 1.6
+        },
+        "next_low": {
+          "time": "2025-07-16T18:56:00+10:00",
+          "height_meters": 0.2
+        }
+      }
+    },
+    "forecasts": {
+      "today": {
+        "date": "2025-07-16",
+        "synopsis": "Southwest winds 15 to 20 knots, reaching 25 knots offshore. Seas 1 to 1.5 metres. Southeast swell 1 to 1.5 metres.",
+        "wind": {
+          "direction": "Southwest",
+          "speed_range_knots": "15-20",
+          "offshore_speed_knots": 25,
+          "change_time": null
+        },
+        "seas": {
+          "height_range_meters": "1.0-1.5",
+          "conditions": "Moderate"
+        },
+        "swell": {
+          "direction": "Southeast", 
+          "height_range_meters": "1.0-1.5",
+          "period_seconds": "8-10"
+        },
+        "weather": "Partly cloudy, isolated showers possible",
+        "visibility": "Good, reducing to moderate in showers"
+      },
+      "tomorrow": {
+        "date": "2025-07-17",
+        "synopsis": "West to southwest winds 10 to 15 knots. Seas around 1 metre. Southeast swell 1 to 1.5 metres, easing.",
+        "wind": {
+          "direction": "West to southwest",
+          "speed_range_knots": "10-15",
+          "offshore_speed_knots": 18,
+          "change_time": "2025-07-17T03:00:00+10:00"
+        },
+        "seas": {
+          "height_range_meters": "0.5-1.0",
+          "conditions": "Slight to moderate"
+        },
+        "swell": {
+          "direction": "Southeast",
+          "height_range_meters": "1.0-1.5",
+          "period_seconds": "8-9",
+          "trend": "Easing"
+        },
+        "weather": "Mostly sunny",
+        "visibility": "Good to very good"
+      }
+    },
+    "warnings": [
+      {
+        "type": "Strong Wind Warning",
+        "status": "Current",
+        "issued": "2025-07-16T04:30:00+10:00",
+        "areas": ["Sydney Coastal Waters", "Hunter Coastal Waters"],
+        "description": "Southwest winds 25 to 30 knots, reaching up to 35 knots offshore during the morning. Winds easing to 15 to 20 knots during the afternoon.",
+        "valid_until": "2025-07-16T15:00:00+10:00"
+      }
+    ],
+    "surf_conditions": {
+      "locations": [
+        {
+          "name": "Bondi Beach",
+          "coordinates": {
+            "latitude": -33.8915,
+            "longitude": 151.2767
+          },
+          "wave_height_meters": 1.2,
+          "conditions": "Fair to good",
+          "wind_effect": "Cross-shore winds affecting quality",
+          "best_time": "Early morning before wind increases",
+          "rating": 6
+        },
+        {
+          "name": "Manly Beach",
+          "coordinates": {
+            "latitude": -33.7969,
+            "longitude": 151.2886
+          },
+          "wave_height_meters": 1.0,
+          "conditions": "Fair",
+          "wind_effect": "Onshore winds creating choppy conditions",
+          "best_time": "Early morning",
+          "rating": 5
+        },
+        {
+          "name": "Cronulla Beach",
+          "coordinates": {
+            "latitude": -34.0285,
+            "longitude": 151.1531
+          },
+          "wave_height_meters": 1.3,
+          "conditions": "Good",
+          "wind_effect": "Light cross-shore winds",
+          "best_time": "Morning sessions recommended",
+          "rating": 7
+        }
+      ]
+    },
+    "boating_conditions": {
+      "small_craft": {
+        "advisory": "Caution advised due to strong winds",
+        "wind_threshold_exceeded": true,
+        "recommended_experience": "Experienced operators only"
+      },
+      "recreational_fishing": {
+        "conditions": "Moderate",
+        "offshore_suitability": "Not recommended beyond 3 nautical miles",
+        "harbour_suitability": "Good conditions for harbour fishing"
+      },
+      "sailing": {
+        "conditions": "Good for experienced sailors",
+        "wind_strength": "Fresh to strong",
+        "reef_recommendations": "Consider reefing in stronger gusts"
+      }
+    },
+    "beach_hazards": [
+      {
+        "beach": "All Sydney beaches",
+        "hazard": "Strong rip currents",
+        "description": "Large swell and onshore winds creating dangerous rip currents",
+        "risk_level": "Moderate to High",
+        "recommendations": "Swim between the flags at patrolled beaches only"
+      },
+      {
+        "beach": "Northern beaches",
+        "hazard": "Large waves on rocks",
+        "description": "Large swell causing dangerous waves on rock platforms",
+        "risk_level": "High",
+        "recommendations": "Stay away from rock platforms and cliff edges"
+      }
+    ],
+    "tidal_information": {
+      "today_tides": [
+        {
+          "time": "2025-07-16T06:23:00+10:00",
+          "type": "Low",
+          "height_meters": 0.3
+        },
+        {
+          "time": "2025-07-16T12:34:00+10:00",
+          "type": "High", 
+          "height_meters": 1.6
+        },
+        {
+          "time": "2025-07-16T18:56:00+10:00",
+          "type": "Low",
+          "height_meters": 0.2
+        }
+      ],
+      "tomorrow_tides": [
+        {
+          "time": "2025-07-17T01:12:00+10:00",
+          "type": "High",
+          "height_meters": 1.4
+        },
+        {
+          "time": "2025-07-17T07:45:00+10:00",
+          "type": "Low",
+          "height_meters": 0.4
+        },
+        {
+          "time": "2025-07-17T13:23:00+10:00",
+          "type": "High",
+          "height_meters": 1.5
+        },
+        {
+          "time": "2025-07-17T19:41:00+10:00",
+          "type": "Low",
+          "height_meters": 0.3
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "generated": "2025-07-16T06:00:00+10:00",
+    "url": "https://www.rfs.nsw.gov.au/feeds/majorIncidents.json",
+    "title": "NSW RFS Major Fire Incidents",
+    "description": "Current major fire incidents across New South Wales",
+    "updateFrequency": "30 minutes"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.2093, -33.8688]
+      },
+      "properties": {
+        "guid": "NSW_RFS_20250716_001",
+        "title": "Bushfire - Blue Mountains National Park",
+        "link": "https://incidents.rfs.nsw.gov.au/api/v1/incidents/NSW_RFS_20250716_001",
+        "category": "Emergency Warning",
+        "pubDate": "2025-07-16T05:30:00+10:00",
+        "author": "NSW Rural Fire Service",
+        "description": "EMERGENCY WARNING: A bushfire is burning in the Blue Mountains National Park area. The fire is out of control and moving in a north easterly direction towards populated areas.",
+        "status": "Going",
+        "size": "1,200 hectares",
+        "responsible_agency": "NSW RFS",
+        "location": "Blue Mountains National Park, Katoomba",
+        "council_area": "Blue Mountains",
+        "fire_danger_today": "Extreme",
+        "weather_conditions": {
+          "temperature": "38°C",
+          "humidity": "15%",
+          "wind_speed": "35 km/h",
+          "wind_direction": "North West"
+        },
+        "resources": {
+          "firefighters": 120,
+          "trucks": 18,
+          "aircraft": 4,
+          "bulldozers": 3
+        },
+        "evacuation_warnings": [
+          "Leura",
+          "Katoomba East",
+          "Medlow Bath"
+        ],
+        "road_closures": [
+          "Great Western Highway (sections)",
+          "Bells Line of Road"
+        ],
+        "alert_level": "EMERGENCY",
+        "watch_and_act_level": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [153.0281, -27.4678]
+      },
+      "properties": {
+        "guid": "NSW_RFS_20250716_002",
+        "title": "Bushfire - Border Ranges National Park",
+        "link": "https://incidents.rfs.nsw.gov.au/api/v1/incidents/NSW_RFS_20250716_002",
+        "category": "Watch and Act",
+        "pubDate": "2025-07-16T04:15:00+10:00",
+        "author": "NSW Rural Fire Service",
+        "description": "WATCH AND ACT: A bushfire is burning near Border Ranges National Park. The fire is being controlled but weather conditions may cause the fire to flare up.",
+        "status": "Being Controlled",
+        "size": "450 hectares",
+        "responsible_agency": "NSW RFS",
+        "location": "Border Ranges National Park, near Kyogle",
+        "council_area": "Kyogle",
+        "fire_danger_today": "Very High",
+        "weather_conditions": {
+          "temperature": "32°C",
+          "humidity": "25%",
+          "wind_speed": "20 km/h",
+          "wind_direction": "South East"
+        },
+        "resources": {
+          "firefighters": 65,
+          "trucks": 12,
+          "aircraft": 2,
+          "bulldozers": 1
+        },
+        "evacuation_warnings": [],
+        "road_closures": [
+          "Border Ranges Road (partial)"
+        ],
+        "alert_level": "WATCH_AND_ACT",
+        "watch_and_act_level": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [150.8931, -34.4278]
+      },
+      "properties": {
+        "guid": "NSW_RFS_20250716_003",
+        "title": "Grass Fire - Southern Highlands",
+        "link": "https://incidents.rfs.nsw.gov.au/api/v1/incidents/NSW_RFS_20250716_003",
+        "category": "Advice",
+        "pubDate": "2025-07-16T03:45:00+10:00",
+        "author": "NSW Rural Fire Service",
+        "description": "ADVICE: A grass fire is burning in the Southern Highlands area. The fire is under control and poses no immediate threat to properties.",
+        "status": "Under Control",
+        "size": "25 hectares",
+        "responsible_agency": "NSW RFS",
+        "location": "Southern Highlands, near Bowral",
+        "council_area": "Wingecarribee",
+        "fire_danger_today": "High",
+        "weather_conditions": {
+          "temperature": "28°C",
+          "humidity": "35%",
+          "wind_speed": "15 km/h",
+          "wind_direction": "East"
+        },
+        "resources": {
+          "firefighters": 25,
+          "trucks": 6,
+          "aircraft": 0,
+          "bulldozers": 0
+        },
+        "evacuation_warnings": [],
+        "road_closures": [],
+        "alert_level": "ADVICE",
+        "watch_and_act_level": false
+      }
+    }
+  ]
+}

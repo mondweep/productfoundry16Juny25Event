@@ -62,13 +62,96 @@ A real-time, crowd-sourced map that visualizes live environmental and community 
 
 ## 🚀 Getting Started
 
+### 🎭 Demo Environment (Current State)
+
+**Quick Start:**
+1. **Clone and run the demo**
+   ```bash
+   git clone <repository-url>
+   cd live-conditions-app
+   
+   # Start backend (demo server)
+   cd backend && npm install && npx ts-node src/simple-server.ts &
+   
+   # Start frontend
+   cd ../frontend && npm install && npm run dev
+   ```
+
+2. **Access the demo**
+   - Open `http://localhost:3000`
+   - View interactive map with demo data
+   - See working UI/UX and architecture
+
+**What Works in Demo:**
+- ✅ Interactive map of Australia & New Zealand
+- ✅ Backend API with mock weather/traffic data
+- ✅ Real-time WebSocket architecture (local connections)
+- ✅ Complete UI with layers panel and status indicators
+- ✅ Professional interface ready for live data
+
+**Demo Limitations:**
+- 🔶 Mock data only (not real-time conditions)
+- 🔶 WebSocket only works locally (not through GitHub Codespaces)
+- 🔶 No real API integrations
+- 🔶 Missing external data source connections
+
+---
+
+### 🌐 Production Environment (Live Data)
+
+**To move beyond demo and get real live conditions:**
+
 ### Prerequisites
 - Node.js 18+ 
 - MongoDB
 - PostgreSQL with PostGIS extension
-- Redis (optional, for enhanced caching)
+- Redis (for caching)
+- **API Keys** (see below)
 
-### Installation
+### Required API Keys & Services
+
+**Australia Data Sources:**
+```bash
+# Weather & Marine
+BOM_API_KEY=your_bureau_of_meteorology_key
+OPENWEATHER_API_KEY=your_openweather_api_key
+
+# Traffic & Transport
+NSW_TRANSPORT_API_KEY=your_nsw_transport_key
+VIC_TRANSPORT_API_KEY=your_vic_transport_key
+QLD_TRANSPORT_API_KEY=your_qld_transport_key
+
+# Emergency Services
+NSW_RFS_API_KEY=your_rural_fire_service_key
+CFA_API_KEY=your_country_fire_authority_key
+```
+
+**New Zealand Data Sources:**
+```bash
+# Weather & Marine
+METSERVICE_API_KEY=your_metservice_key
+NIWA_API_KEY=your_niwa_marine_key
+
+# Transport
+NZTA_API_KEY=your_nzta_traffic_key
+
+# Emergency & Geological
+GEONET_API_KEY=your_geonet_earthquake_key
+```
+
+**Additional Services:**
+```bash
+# Maps & Geocoding
+MAPBOX_API_KEY=your_mapbox_token
+GOOGLE_MAPS_API_KEY=your_google_maps_key
+
+# Authentication & Monitoring
+AUTH0_DOMAIN=your_auth0_domain
+AUTH0_CLIENT_ID=your_auth0_client_id
+SENTRY_DSN=your_sentry_monitoring_url
+```
+
+### Production Installation
 
 1. **Clone the repository**
    ```bash
@@ -81,7 +164,15 @@ A real-time, crowd-sourced map that visualizes live environmental and community 
    cd backend
    npm install
    cp .env.example .env
-   # Configure your .env file with database URLs and API keys
+   
+   # Configure ALL API keys in .env file
+   nano .env
+   
+   # Install databases
+   # MongoDB: https://docs.mongodb.com/manual/installation/
+   # PostgreSQL: https://postgresql.org/download/
+   # Redis: https://redis.io/download
+   
    npm run dev
    ```
 
@@ -89,6 +180,11 @@ A real-time, crowd-sourced map that visualizes live environmental and community 
    ```bash
    cd frontend
    npm install
+   
+   # Configure environment
+   cp .env.example .env.local
+   nano .env.local
+   
    npm run dev
    ```
 
@@ -102,22 +198,101 @@ A real-time, crowd-sourced map that visualizes live environmental and community 
 ### Environment Variables
 
 **Backend (.env):**
-```
+```bash
+# Server Configuration
 PORT=3001
 WEBSOCKET_PORT=3002
+NODE_ENV=production
+
+# Databases
 MONGODB_URI=mongodb://localhost:27017/live_conditions
 POSTGRESQL_URI=postgresql://user:password@localhost:5432/live_conditions
 REDIS_URI=redis://localhost:6379
-JWT_SECRET=your_jwt_secret
+
+# Security
+JWT_SECRET=your_jwt_secret_256_bit
+AUTH0_DOMAIN=your-tenant.auth0.com
+AUTH0_AUDIENCE=your-api-identifier
+
+# Australia API Keys
 BOM_API_KEY=your_bom_api_key
+OPENWEATHER_API_KEY=your_openweather_key
+NSW_TRANSPORT_API_KEY=your_nsw_transport_key
+NSW_RFS_API_KEY=your_rural_fire_service_key
+
+# New Zealand API Keys
+METSERVICE_API_KEY=your_metservice_key
+NIWA_API_KEY=your_niwa_key
+NZTA_API_KEY=your_nzta_key
+GEONET_API_KEY=your_geonet_key
+
+# Monitoring & Logging
+SENTRY_DSN=your_sentry_dsn
+LOG_LEVEL=info
 ```
 
 **Frontend (.env.local):**
-```
+```bash
 NEXT_PUBLIC_API_URL=http://localhost:3001/api/v1
 NEXT_PUBLIC_WEBSOCKET_URL=ws://localhost:3002
 NEXT_PUBLIC_MAPBOX_TOKEN=your_mapbox_token
+NEXT_PUBLIC_AUTH0_DOMAIN=your-tenant.auth0.com
+NEXT_PUBLIC_AUTH0_CLIENT_ID=your_auth0_client_id
+NEXT_PUBLIC_SENTRY_DSN=your_frontend_sentry_dsn
 ```
+
+### 🔑 How to Obtain API Keys
+
+**Australian Services:**
+1. **Bureau of Meteorology**: Register at [data.gov.au](http://data.gov.au)
+2. **NSW Transport**: Apply at [opendata.transport.nsw.gov.au](https://opendata.transport.nsw.gov.au)
+3. **Rural Fire Service**: Contact [rfs.nsw.gov.au](https://rfs.nsw.gov.au) for data access
+4. **OpenWeather**: Sign up at [openweathermap.org](https://openweathermap.org/api)
+
+**New Zealand Services:**
+1. **MetService**: Register at [metservice.com/national/about/weatherdata](https://metservice.com)
+2. **NIWA**: Apply for access at [niwa.co.nz](https://niwa.co.nz)
+3. **NZTA**: Register at [nzta.govt.nz/resources/traffic-and-travel-data](https://nzta.govt.nz)
+4. **GeoNet**: Access data via [geonet.org.nz](https://geonet.org.nz)
+
+**Other Services:**
+1. **Mapbox**: Create account at [mapbox.com](https://mapbox.com)
+2. **Auth0**: Sign up at [auth0.com](https://auth0.com)
+3. **Sentry**: Register at [sentry.io](https://sentry.io)
+
+### 🔧 Backend Code Updates Needed
+
+**Replace mock data in `src/simple-server.ts` with real API calls:**
+
+1. **Weather Service Integration**
+   ```typescript
+   // Replace mock weather data with real BOM/MetService calls
+   app.get('/api/v1/weather/current', async (req, res) => {
+     const bomData = await fetchBOMData(lat, lng);
+     const processedData = processBOMResponse(bomData);
+     res.json(processedData);
+   });
+   ```
+
+2. **Emergency Services Integration**
+   ```typescript
+   // Add real fire/flood data feeds
+   app.get('/api/v1/fires', async (req, res) => {
+     const fireData = await fetchNSWRFSIncidents();
+     res.json(fireData);
+   });
+   ```
+
+3. **Transport Integration**
+   ```typescript
+   // Add real traffic data
+   app.get('/api/v1/traffic', async (req, res) => {
+     const trafficData = await fetchTransportAPI();
+     res.json(trafficData);
+   });
+   ```
+
+**See `/docs/api-integrations.md` for detailed integration examples.**
 
 ## 📱 Usage
 

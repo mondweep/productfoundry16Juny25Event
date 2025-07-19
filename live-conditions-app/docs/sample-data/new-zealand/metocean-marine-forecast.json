@@ -1,0 +1,383 @@
+{
+  "marine_forecast": {
+    "metadata": {
+      "generated": "2025-07-16T19:00:00+13:00",
+      "source": "MetOcean Solutions",
+      "model": "NZWAVE-WW3",
+      "forecast_area": "New Zealand Coastal Waters",
+      "issue_time": "2025-07-16T18:00:00+13:00",
+      "valid_from": "2025-07-16T18:00:00+13:00",
+      "valid_to": "2025-07-19T18:00:00+13:00",
+      "update_frequency": "6 hourly"
+    },
+    "current_conditions": [
+      {
+        "location": "Auckland - Waitemata Harbour",
+        "coordinates": {
+          "latitude": -36.8485,
+          "longitude": 174.7633
+        },
+        "observation_time": "2025-07-16T18:45:00+13:00",
+        "wind": {
+          "direction_degrees": 225,
+          "direction_text": "Southwest",
+          "speed_knots": 22,
+          "speed_ms": 11.3,
+          "gusts_knots": 30,
+          "beaufort_scale": 6
+        },
+        "waves": {
+          "significant_height_meters": 2.1,
+          "maximum_height_meters": 3.5,
+          "mean_period_seconds": 7.2,
+          "peak_period_seconds": 9.1,
+          "direction_degrees": 195,
+          "direction_text": "South-southwest"
+        },
+        "swell": {
+          "primary": {
+            "height_meters": 1.8,
+            "period_seconds": 11.5,
+            "direction_degrees": 210,
+            "direction_text": "Southwest"
+          },
+          "secondary": {
+            "height_meters": 0.9,
+            "period_seconds": 8.2,
+            "direction_degrees": 180,
+            "direction_text": "South"
+          }
+        },
+        "sea_state": {
+          "description": "Rough",
+          "beaufort_scale": 5,
+          "whitecap_coverage_percent": 45
+        },
+        "visibility_kilometers": 12,
+        "air_temperature_celsius": 11.2,
+        "sea_temperature_celsius": 14.8,
+        "atmospheric_pressure_hpa": 1015.3
+      },
+      {
+        "location": "Wellington - Cook Strait",
+        "coordinates": {
+          "latitude": -41.2865,
+          "longitude": 174.7762
+        },
+        "observation_time": "2025-07-16T18:45:00+13:00",
+        "wind": {
+          "direction_degrees": 270,
+          "direction_text": "West",
+          "speed_knots": 35,
+          "speed_ms": 18.0,
+          "gusts_knots": 48,
+          "beaufort_scale": 8
+        },
+        "waves": {
+          "significant_height_meters": 4.2,
+          "maximum_height_meters": 7.1,
+          "mean_period_seconds": 8.8,
+          "peak_period_seconds": 12.3,
+          "direction_degrees": 265,
+          "direction_text": "West"
+        },
+        "swell": {
+          "primary": {
+            "height_meters": 3.5,
+            "period_seconds": 14.2,
+            "direction_degrees": 250,
+            "direction_text": "West-southwest"
+          },
+          "secondary": {
+            "height_meters": 1.8,
+            "period_seconds": 9.7,
+            "direction_degrees": 220,
+            "direction_text": "Southwest"
+          }
+        },
+        "sea_state": {
+          "description": "Very rough",
+          "beaufort_scale": 6,
+          "whitecap_coverage_percent": 75
+        },
+        "visibility_kilometers": 8,
+        "air_temperature_celsius": 9.8,
+        "sea_temperature_celsius": 13.1,
+        "atmospheric_pressure_hpa": 1012.8
+      },
+      {
+        "location": "Christchurch - Banks Peninsula",
+        "coordinates": {
+          "latitude": -43.6319,
+          "longitude": 172.7347
+        },
+        "observation_time": "2025-07-16T18:45:00+13:00",
+        "wind": {
+          "direction_degrees": 200,
+          "direction_text": "South-southwest",
+          "speed_knots": 18,
+          "speed_ms": 9.3,
+          "gusts_knots": 25,
+          "beaufort_scale": 5
+        },
+        "waves": {
+          "significant_height_meters": 1.8,
+          "maximum_height_meters": 2.9,
+          "mean_period_seconds": 6.5,
+          "peak_period_seconds": 8.7,
+          "direction_degrees": 180,
+          "direction_text": "South"
+        },
+        "swell": {
+          "primary": {
+            "height_meters": 1.5,
+            "period_seconds": 12.8,
+            "direction_degrees": 195,
+            "direction_text": "South-southwest"
+          },
+          "secondary": {
+            "height_meters": 0.6,
+            "period_seconds": 7.1,
+            "direction_degrees": 160,
+            "direction_text": "South-southeast"
+          }
+        },
+        "sea_state": {
+          "description": "Moderate",
+          "beaufort_scale": 4,
+          "whitecap_coverage_percent": 25
+        },
+        "visibility_kilometers": 18,
+        "air_temperature_celsius": 8.5,
+        "sea_temperature_celsius": 12.4,
+        "atmospheric_pressure_hpa": 1018.1
+      }
+    ],
+    "forecasts": {
+      "6_hour": {
+        "valid_time": "2025-07-17T00:00:00+13:00",
+        "locations": [
+          {
+            "name": "Auckland Waters",
+            "wind": {
+              "direction_degrees": 240,
+              "speed_knots": 25,
+              "gusts_knots": 32
+            },
+            "waves": {
+              "significant_height_meters": 2.3,
+              "period_seconds": 7.8,
+              "direction_degrees": 205
+            },
+            "swell": {
+              "height_meters": 2.0,
+              "period_seconds": 12.1,
+              "direction_degrees": 215
+            }
+          },
+          {
+            "name": "Cook Strait",
+            "wind": {
+              "direction_degrees": 275,
+              "speed_knots": 40,
+              "gusts_knots": 55
+            },
+            "waves": {
+              "significant_height_meters": 5.1,
+              "period_seconds": 9.2,
+              "direction_degrees": 270
+            },
+            "swell": {
+              "height_meters": 4.2,
+              "period_seconds": 15.3,
+              "direction_degrees": 260
+            }
+          }
+        ]
+      },
+      "24_hour": {
+        "valid_time": "2025-07-17T18:00:00+13:00",
+        "locations": [
+          {
+            "name": "Auckland Waters",
+            "wind": {
+              "direction_degrees": 220,
+              "speed_knots": 20,
+              "gusts_knots": 28
+            },
+            "waves": {
+              "significant_height_meters": 1.9,
+              "period_seconds": 7.2,
+              "direction_degrees": 200
+            },
+            "swell": {
+              "height_meters": 1.6,
+              "period_seconds": 11.5,
+              "direction_degrees": 210
+            }
+          },
+          {
+            "name": "Cook Strait",
+            "wind": {
+              "direction_degrees": 260,
+              "speed_knots": 30,
+              "gusts_knots": 42
+            },
+            "waves": {
+              "significant_height_meters": 3.8,
+              "period_seconds": 8.5,
+              "direction_degrees": 255
+            },
+            "swell": {
+              "height_meters": 3.2,
+              "period_seconds": 13.8,
+              "direction_degrees": 250
+            }
+          }
+        ]
+      }
+    },
+    "surf_conditions": [
+      {
+        "beach": "Raglan - Manu Bay",
+        "coordinates": {
+          "latitude": -37.7974,
+          "longitude": 174.8569
+        },
+        "wave_height_meters": 1.8,
+        "wave_period_seconds": 11.2,
+        "wind_effect": "Light offshore - good conditions",
+        "surf_quality": "Good to very good",
+        "crowd_factor": "Moderate",
+        "rating": 8,
+        "best_times": ["Early morning", "Late afternoon"],
+        "hazards": ["Strong current on incoming tide"]
+      },
+      {
+        "beach": "Piha Beach",
+        "coordinates": {
+          "latitude": -36.9567,
+          "longitude": 174.4696
+        },
+        "wave_height_meters": 2.1,
+        "wave_period_seconds": 9.8,
+        "wind_effect": "Cross-shore winds affecting quality",
+        "surf_quality": "Fair to good",
+        "crowd_factor": "High",
+        "rating": 6,
+        "best_times": ["Early morning before wind picks up"],
+        "hazards": ["Strong rips", "Heavy water volume"]
+      },
+      {
+        "beach": "Mount Maunganui",
+        "coordinates": {
+          "latitude": -37.6333,
+          "longitude": 176.1833
+        },
+        "wave_height_meters": 1.2,
+        "wave_period_seconds": 8.5,
+        "wind_effect": "Light onshore - clean conditions",
+        "surf_quality": "Good",
+        "crowd_factor": "High",
+        "rating": 7,
+        "best_times": ["All day suitable"],
+        "hazards": ["Crowded lineup"]
+      }
+    ],
+    "marine_weather_warnings": [
+      {
+        "warning_type": "Strong Wind Warning",
+        "areas": ["Cook Strait", "Foveaux Strait", "Canterbury Waters"],
+        "issued": "2025-07-16T16:30:00+13:00",
+        "valid_until": "2025-07-17T12:00:00+13:00",
+        "description": "West to southwest gales 35 to 45 knots, gusting 55 knots. Seas 4 to 6 metres.",
+        "severity": "Moderate"
+      },
+      {
+        "warning_type": "Heavy Swell Warning",
+        "areas": ["West Coast South Island", "Taranaki Waters"],
+        "issued": "2025-07-16T15:00:00+13:00",
+        "valid_until": "2025-07-17T21:00:00+13:00",
+        "description": "Southwest swell 4 to 5 metres, period 12 to 15 seconds.",
+        "severity": "Moderate"
+      }
+    ],
+    "tidal_predictions": {
+      "Auckland": {
+        "today": [
+          {
+            "time": "2025-07-16T23:34:00+13:00",
+            "type": "High",
+            "height_meters": 3.2
+          }
+        ],
+        "tomorrow": [
+          {
+            "time": "2025-07-17T05:45:00+13:00",
+            "type": "Low",
+            "height_meters": 0.4
+          },
+          {
+            "time": "2025-07-17T12:12:00+13:00",
+            "type": "High",
+            "height_meters": 3.1
+          },
+          {
+            "time": "2025-07-17T18:23:00+13:00",
+            "type": "Low",
+            "height_meters": 0.6
+          }
+        ]
+      },
+      "Wellington": {
+        "today": [
+          {
+            "time": "2025-07-16T22:18:00+13:00",
+            "type": "High",
+            "height_meters": 1.8
+          }
+        ],
+        "tomorrow": [
+          {
+            "time": "2025-07-17T04:32:00+13:00",
+            "type": "Low",
+            "height_meters": 0.2
+          },
+          {
+            "time": "2025-07-17T10:45:00+13:00",
+            "type": "High",
+            "height_meters": 1.7
+          },
+          {
+            "time": "2025-07-17T16:56:00+13:00",
+            "type": "Low",
+            "height_meters": 0.3
+          }
+        ]
+      }
+    },
+    "small_craft_advisories": [
+      {
+        "area": "Hauraki Gulf",
+        "advisory": "Exercise caution - fresh to strong southwest winds",
+        "wind_threshold": "20+ knots",
+        "sea_conditions": "Moderate to rough",
+        "recommendation": "Experienced skippers only"
+      },
+      {
+        "area": "Cook Strait",
+        "advisory": "Small craft warning - gale force winds",
+        "wind_threshold": "35+ knots",
+        "sea_conditions": "Very rough to high",
+        "recommendation": "All small craft avoid passage"
+      },
+      {
+        "area": "Canterbury coastal waters",
+        "advisory": "Suitable for experienced operators",
+        "wind_threshold": "15-20 knots",
+        "sea_conditions": "Moderate",
+        "recommendation": "Monitor conditions closely"
+      }
+    ]
+  }
+}

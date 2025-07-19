@@ -13,6 +13,10 @@ lerna-debug.log*
 .env.test.local
 .env.production.local
 *.env
+# Exception for example env files
+!.env.example
+!.env.template
+!**/.env.example
 
 # IDE and Editor directories
 .vscode/
@@ -76,6 +80,10 @@ htmlcov/
 *.sqlite3
 *.sql
 .swarm/memory.db
+# But include SQL schema and migration files
+!**/schema.sql
+!**/migrations/*.sql
+!**/seeds/*.sql
 
 # Temporary files
 tmp/
@@ -129,7 +137,7 @@ secrets/
 *.flac
 *.aac
 
-# Large data files
+# Large data files (GitHub 100MB limit)
 *.csv
 *.xlsx
 *.xls
@@ -141,10 +149,118 @@ secrets/
 !tsconfig.json
 !claude-flow.config.json
 !.mcp.json
+!**/sample-data/**/*.json
 *.xml
 !pom.xml
 *.dat
 *.data
+
+# Large files that exceed GitHub limits
+*.dmg
+*.iso
+*.img
+*.bin
+*.exe
+*.msi
+*.deb
+*.rpm
+*.pkg
+*.app
+*.ipa
+*.apk
+*.aab
+
+# Large media files
+*.psd
+*.ai
+*.sketch
+*.fig
+*.xd
+*.pdf
+*.eps
+*.tiff
+*.tif
+*.bmp
+*.raw
+*.cr2
+*.nef
+*.orf
+*.sr2
+*.mrw
+*.dcr
+*.x3f
+*.arw
+*.pef
+*.raf
+*.3fr
+*.ari
+*.srf
+*.sr2
+*.bay
+*.crw
+*.cr3
+*.fff
+*.mef
+*.mos
+*.nrw
+*.ptx
+*.r3d
+*.rwz
+*.srw
+*.x3f
+
+# Large video files
+*.mov
+*.avi
+*.mp4
+*.mkv
+*.wmv
+*.flv
+*.webm
+*.m4v
+*.3gp
+*.3g2
+*.rm
+*.swf
+*.vob
+
+# Large audio files  
+*.wav
+*.flac
+*.aiff
+*.au
+*.m4a
+*.wma
+*.ogg
+*.opus
+
+# Archive files (often large)
+*.zip
+*.rar
+*.7z
+*.tar
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.gz
+*.bz2
+*.xz
+*.Z
+
+# Backup files (can be large)
+*.backup
+*.bak
+*.old
+*.orig
+*.save
+*.swp
+*.tmp
+
+# Database dumps and backups
+*.dump
+*.sql.gz
+*.sql.zip
+*.db.backup
 
 # Python
 __pycache__/
@@ -284,3 +400,35 @@ Temporary Items
 .directory
 .Trash-*
 .nfs*
+
+# Allow demo screenshots to be uploaded
+!live-conditions-app/output\ demo\ screenshots/*.png
+!**/screenshots/*.png
+!**/demo/*.png
+!**/assets/*.png
+
+# Security & sensitive data (explicit protection)
+config/keys/
+config/credentials/
+config/secrets/
+auth/tokens/
+auth/keys/
+*.p8
+*.mobileprovision
+keystore.jks
+release.keystore
+google-services.json
+GoogleService-Info.plist
+firebase-adminsdk-*.json
+.gcloud/
+.aws/
+.azure/
+
+# API keys and tokens (common naming patterns)
+**/api-keys/
+**/tokens/
+**/credentials/
+**/*secret*
+**/*password*
+**/*private*
+**/*confidential*

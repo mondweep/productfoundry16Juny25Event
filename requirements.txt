@@ -1,0 +1,48 @@
+# System Requirements for Aotearoa & Aussie Live Conditions App
+
+# Node.js Environment
+# Node.js >= 18.0.0
+# npm >= 8.0.0
+
+# Global Dependencies (install with npm install -g)
+# typescript@^5.2.2
+# nodemon@^3.0.1
+# ts-node@^10.9.1
+
+# Database Requirements
+# MongoDB >= 6.0 (for user data and application state)
+# Redis >= 6.0 (for caching and real-time features)
+
+# Backend Dependencies (automatically installed with npm install in /backend)
+# See live-conditions-app/backend/package.json for complete list
+
+# Frontend Dependencies (automatically installed with npm install in /frontend)  
+# See live-conditions-app/frontend/package.json for complete list
+
+# Environment Variables Required
+# Create .env files based on .env.example in each directory:
+# - live-conditions-app/backend/.env
+# - live-conditions-app/frontend/.env.local
+
+# External API Keys Required (add to .env files)
+# - OpenWeatherMap API key
+# - Bureau of Meteorology API access
+# - MetService API access
+# - GeoNet API access (free)
+# - NSW RFS API access
+# - NZTA API access
+
+# Optional Services
+# - Docker and Docker Compose (for containerized deployment)
+# - PM2 (for production process management)
+# - Nginx (for reverse proxy in production)
+
+# Development Tools
+# - VSCode or similar IDE
+# - Git >= 2.30
+# - Postman or similar API testing tool
+
+# Minimum System Requirements
+# - RAM: 4GB minimum, 8GB recommended
+# - Storage: 2GB free space
+# - Network: Stable internet connection for API calls

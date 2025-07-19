@@ -1,0 +1,242 @@
+{
+  "traffic_data": {
+    "metadata": {
+      "generated": "2025-07-16T06:00:00+10:00",
+      "source": "Transport for NSW",
+      "url": "https://opendata.transport.nsw.gov.au/",
+      "description": "Real-time traffic incidents and camera feeds for NSW",
+      "api_version": "v1.0",
+      "last_updated": "2025-07-16T05:58:23+10:00"
+    },
+    "incidents": [
+      {
+        "id": "TfNSW_20250716_001",
+        "incident_type": "Crash",
+        "severity": "Major",
+        "location": {
+          "road": "M1 Pacific Motorway",
+          "suburb": "Wahroonga",
+          "direction": "Southbound",
+          "coordinates": {
+            "latitude": -33.7186,
+            "longitude": 151.1297
+          },
+          "reference": "Before Pennant Hills Road exit"
+        },
+        "status": "Active",
+        "first_reported": "2025-07-16T05:12:00+10:00",
+        "last_updated": "2025-07-16T05:55:00+10:00",
+        "estimated_clearance": "2025-07-16T07:30:00+10:00",
+        "description": "Multi-vehicle crash blocking 2 of 3 lanes. Emergency services attending. Significant delays expected.",
+        "impact": {
+          "lanes_blocked": 2,
+          "total_lanes": 3,
+          "delay_time_minutes": 45,
+          "traffic_volume": "Heavy",
+          "speed_kmh": 15
+        },
+        "emergency_response": {
+          "police": true,
+          "ambulance": true,
+          "fire_rescue": true,
+          "tow_trucks": 2
+        },
+        "alternate_routes": [
+          {
+            "description": "Exit at Pennant Hills Road, use local roads to Hornsby",
+            "additional_time_minutes": 25
+          }
+        ]
+      },
+      {
+        "id": "TfNSW_20250716_002",
+        "incident_type": "Roadwork",
+        "severity": "Minor",
+        "location": {
+          "road": "A1 Princes Highway",
+          "suburb": "Miranda",
+          "direction": "Both directions",
+          "coordinates": {
+            "latitude": -34.0344,
+            "longitude": 151.1014
+          },
+          "reference": "Between Kingsway and Kiora Road"
+        },
+        "status": "Ongoing",
+        "first_reported": "2025-07-16T00:00:00+10:00",
+        "last_updated": "2025-07-16T05:30:00+10:00",
+        "estimated_clearance": "2025-07-16T15:00:00+10:00",
+        "description": "Lane maintenance work. Contra-flow traffic management in place.",
+        "impact": {
+          "lanes_blocked": 1,
+          "total_lanes": 4,
+          "delay_time_minutes": 10,
+          "traffic_volume": "Moderate",
+          "speed_kmh": 35
+        },
+        "emergency_response": {
+          "police": false,
+          "ambulance": false,
+          "fire_rescue": false,
+          "tow_trucks": 0
+        },
+        "work_details": {
+          "contractor": "NSW Roads",
+          "work_type": "Surface maintenance",
+          "scheduled_completion": "2025-07-16T15:00:00+10:00"
+        }
+      },
+      {
+        "id": "TfNSW_20250716_003",
+        "incident_type": "Breakdown",
+        "severity": "Minor",
+        "location": {
+          "road": "M5 South Western Motorway",
+          "suburb": "Revesby",
+          "direction": "Westbound",
+          "coordinates": {
+            "latitude": -33.9497,
+            "longitude": 151.0136
+          },
+          "reference": "Between Milperra Road and Henry Lawson Drive"
+        },
+        "status": "Clearing",
+        "first_reported": "2025-07-16T05:35:00+10:00",
+        "last_updated": "2025-07-16T05:50:00+10:00",
+        "estimated_clearance": "2025-07-16T06:15:00+10:00",
+        "description": "Broken down vehicle on shoulder. Recovery in progress.",
+        "impact": {
+          "lanes_blocked": 0,
+          "total_lanes": 3,
+          "delay_time_minutes": 5,
+          "traffic_volume": "Light",
+          "speed_kmh": 85
+        },
+        "emergency_response": {
+          "police": false,
+          "ambulance": false,
+          "fire_rescue": false,
+          "tow_trucks": 1
+        }
+      }
+    ],
+    "traffic_cameras": [
+      {
+        "id": "CAM_M1_001",
+        "name": "M1 Pacific Motorway - Wahroonga",
+        "location": {
+          "road": "M1 Pacific Motorway",
+          "suburb": "Wahroonga",
+          "direction": "Southbound",
+          "coordinates": {
+            "latitude": -33.7186,
+            "longitude": 151.1297
+          }
+        },
+        "image_url": "https://www.livetraffic.com/images/cameras/m1_wahroonga_sb.jpg",
+        "last_updated": "2025-07-16T05:59:00+10:00",
+        "update_frequency_seconds": 60,
+        "status": "Active",
+        "view_description": "Looking south towards Pennant Hills Road exit"
+      },
+      {
+        "id": "CAM_A1_001",
+        "name": "A1 Princes Highway - Miranda",
+        "location": {
+          "road": "A1 Princes Highway",
+          "suburb": "Miranda",
+          "direction": "Both directions",
+          "coordinates": {
+            "latitude": -34.0344,
+            "longitude": 151.1014
+          }
+        },
+        "image_url": "https://www.livetraffic.com/images/cameras/a1_miranda.jpg",
+        "last_updated": "2025-07-16T05:59:30+10:00",
+        "update_frequency_seconds": 60,
+        "status": "Active",
+        "view_description": "Looking north towards Kingsway intersection"
+      },
+      {
+        "id": "CAM_SHB_001",
+        "name": "Sydney Harbour Bridge",
+        "location": {
+          "road": "A4 Warringah Freeway",
+          "suburb": "Sydney",
+          "direction": "Southbound",
+          "coordinates": {
+            "latitude": -33.8523,
+            "longitude": 151.2108
+          }
+        },
+        "image_url": "https://www.livetraffic.com/images/cameras/harbour_bridge_sb.jpg",
+        "last_updated": "2025-07-16T05:59:45+10:00",
+        "update_frequency_seconds": 60,
+        "status": "Active",
+        "view_description": "Looking south across Sydney Harbour Bridge"
+      }
+    ],
+    "travel_times": [
+      {
+        "route_id": "RT_001",
+        "name": "Sydney CBD to Parramatta",
+        "distance_km": 24,
+        "normal_time_minutes": 35,
+        "current_time_minutes": 42,
+        "delay_minutes": 7,
+        "traffic_condition": "Moderate",
+        "last_updated": "2025-07-16T05:58:00+10:00"
+      },
+      {
+        "route_id": "RT_002", 
+        "name": "Sydney Airport to City",
+        "distance_km": 12,
+        "normal_time_minutes": 20,
+        "current_time_minutes": 28,
+        "delay_minutes": 8,
+        "traffic_condition": "Heavy",
+        "last_updated": "2025-07-16T05:58:00+10:00"
+      },
+      {
+        "route_id": "RT_003",
+        "name": "North Shore to City",
+        "distance_km": 15,
+        "normal_time_minutes": 25,
+        "current_time_minutes": 45,
+        "delay_minutes": 20,
+        "traffic_condition": "Very Heavy",
+        "last_updated": "2025-07-16T05:58:00+10:00",
+        "notes": "Delays due to M1 crash at Wahroonga"
+      }
+    ],
+    "road_conditions": [
+      {
+        "road": "M1 Pacific Motorway",
+        "section": "Sydney to Newcastle",
+        "conditions": "Wet roads in sections due to overnight rain",
+        "visibility": "Good",
+        "temperature_celsius": 12,
+        "weather_impact": "Minor - reduce speed in wet areas"
+      },
+      {
+        "road": "M5 South Western Motorway", 
+        "section": "CBD to Liverpool",
+        "conditions": "Dry roads, clear visibility",
+        "visibility": "Excellent",
+        "temperature_celsius": 13,
+        "weather_impact": "None"
+      }
+    ],
+    "service_alerts": [
+      {
+        "type": "Construction",
+        "title": "WestConnex M4-M5 Link Tunnels",
+        "description": "Ongoing construction may cause noise and vibration in surrounding areas",
+        "affected_areas": ["Rozelle", "Leichhardt", "Summer Hill"],
+        "start_date": "2025-01-01",
+        "end_date": "2025-12-31",
+        "impact_level": "Low"
+      }
+    ]
+  }
+}
