@@ -4,6 +4,9 @@ This document provides solutions to common issues encountered during development
 
 ## 📋 Table of Contents
 
+- [MCP Server Issues](#mcp-server-issues)
+- [Claude Desktop Integration Issues](#claude-desktop-integration-issues)
+- [GitHub Codespaces Remote Access Issues](#github-codespaces-remote-access-issues)
 - [Frontend Issues](#frontend-issues)
 - [Backend Issues](#backend-issues)
 - [API Integration Issues](#api-integration-issues)
@@ -13,6 +16,378 @@ This document provides solutions to common issues encountered during development
 - [Environment Configuration Issues](#environment-configuration-issues)
 - [Performance Issues](#performance-issues)
 - [Known Limitations](#known-limitations)
+
+---
+
+## 🤖 MCP Server Issues
+
+### Issue: MCP Server API Endpoint Mismatches
+
+**Problem:** MCP server tools return 404 errors when calling backend APIs.
+
+**Symptoms:**
+- Weather tools return "Request failed with status code 404"
+- MCP tools work in terminal but fail when integrated
+- Backend server returns "Route not found" errors
+
+**Root Cause:** 
+- MCP server calling wrong API endpoints (e.g., `/api/weather/` instead of `/api/v1/weather/`)
+- Backend API versioning not matching MCP configuration
+- Incorrect `BACKEND_API_URL` environment variable
+
+**Solution:**
+```typescript
+// Fix API endpoints in weather.ts
+const response = await axios.get(
+  `${env.BACKEND_API_URL}/api/v1/weather/current?${params.toString()}`,
+  {
+    timeout: env.API_TIMEOUT,
+    headers: {
+      'User-Agent': 'LiveConditions-MCP-Server/1.0.0',
+    },
+  }
+);
+
+// Ensure correct .env configuration
+NODE_ENV=development
+LOG_LEVEL=info
+BACKEND_API_URL=http://localhost:3001
+API_TIMEOUT=10000
+```
+
+**Prevention:**
+- Always verify backend API endpoints match MCP tool endpoints
+- Use environment variables for API URL configuration
+- Test MCP tools directly with JSON-RPC calls before integration
+
+### Issue: MCP Server Response Data Structure Mismatch
+
+**Problem:** MCP server crashes with "Cannot read properties of undefined" errors.
+
+**Symptoms:**
+- TypeError when accessing response data properties
+- MCP tools return empty or malformed responses
+- Backend API returns different data structure than expected
+
+**Root Cause:**
+- Backend API wraps responses in `{success: true, data: {...}}` format
+- MCP server expects direct data structure
+- Missing error handling for API response formats
+
+**Solution:**
+```typescript
+// Handle both wrapped and unwrapped API responses
+const apiResponse = response.data;
+const weatherData = apiResponse.data || apiResponse; // Handle both formats
+
+// Add proper error handling
+try {
+  const response = await axios.get(endpoint);
+  const apiResponse = response.data;
+  
+  if (!apiResponse || (!apiResponse.data && !apiResponse.location)) {
+    throw new Error('Invalid API response format');
+  }
+  
+  const weatherData = apiResponse.data || apiResponse;
+  // Process weatherData...
+} catch (error) {
+  logger.error(`API call failed: ${error.message}`);
+  return {
+    content: [{
+      type: 'text',
+      text: `Error: ${error.message}`
+    }],
+    isError: true
+  };
+}
+```
+
+---
+
+## 🖥️ Claude Desktop Integration Issues
+
+### Issue: Claude Desktop Cannot Connect to MCP Server in Codespaces
+
+**Problem:** Claude Desktop on local machine cannot access MCP server running in GitHub Codespaces.
+
+**Symptoms:**
+- "Server disconnected" messages in Claude Desktop
+- MCP tools not appearing in Claude Desktop
+- Connection timeout errors
+- "ZodError" validation failures
+
+**Root Cause:**
+- Codespaces runs in remote environment, not accessible locally
+- Claude Desktop expects stdio-based MCP servers, not HTTP
+- Network connectivity issues between local machine and Codespaces
+
+**Solution (Complete Setup):**
+```bash
+# 1. Install GitHub CLI (if needed)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install gh
+
+# 2. Authenticate with codespace scope
+gh auth refresh -h github.com -s codespace
+
+# 3. Set up port forwarding
+gh codespace ports forward 3003:3003 --codespace $(gh codespace list --json | jq -r '.[0].name')
+
+# 4. Create HTTP bridge server in Codespaces
+# File: /workspaces/.../mcp-server/http-bridge.js
+const express = require('express');
+const { spawn } = require('child_process');
+const app = express();
+
+app.use(express.json());
+
+app.post('/', async (req, res) => {
+  const mcpProcess = spawn('node', ['dist/index.js'], {
+    stdio: ['pipe', 'pipe', 'pipe']
+  });
+  
+  mcpProcess.stdin.write(JSON.stringify(req.body) + '\n');
+  mcpProcess.stdin.end();
+  
+  let output = '';
+  mcpProcess.stdout.on('data', (data) => output += data);
+  
+  mcpProcess.on('close', () => {
+    try {
+      const response = JSON.parse(output.trim().split('\n').pop());
+      res.json(response);
+    } catch (e) {
+      res.status(500).json({
+        jsonrpc: '2.0',
+        id: req.body.id,
+        error: { code: -32603, message: 'Parse error' }
+      });
+    }
+  });
+});
+
+app.listen(3003, () => console.log('HTTP bridge listening on port 3003'));
+
+# 5. Create local bridge script
+# File: ~/live-conditions-bridge.js
+const readline = require('readline');
+const http = require('http');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+  terminal: false
+});
+
+rl.on('line', (line) => {
+  try {
+    const request = JSON.parse(line);
+    const postData = JSON.stringify(request);
+    
+    const req = http.request({
+      hostname: 'localhost',
+      port: 3003,
+      path: '/',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Content-Length': Buffer.byteLength(postData)
+      }
+    }, (res) => {
+      let data = '';
+      res.on('data', (chunk) => data += chunk);
+      res.on('end', () => {
+        try {
+          const response = JSON.parse(data);
+          console.log(JSON.stringify(response));
+        } catch (e) {
+          console.log(JSON.stringify({
+            jsonrpc: '2.0',
+            id: request.id,
+            error: { code: -32700, message: 'Parse error' }
+          }));
+        }
+      });
+    });
+    
+    req.write(postData);
+    req.end();
+  } catch (e) {
+    console.log(JSON.stringify({
+      jsonrpc: '2.0',
+      id: null,
+      error: { code: -32700, message: 'Invalid JSON' }
+    }));
+  }
+});
+
+# 6. Configure Claude Desktop
+# File: ~/Library/Application Support/Claude/claude_desktop_config.json
+{
+  "mcpServers": {
+    "live-conditions": {
+      "command": "node",
+      "args": ["/Users/username/live-conditions-bridge.js"],
+      "env": {
+        "LOG_LEVEL": "info"
+      }
+    }
+  }
+}
+```
+
+**Prevention:**
+- Always test MCP server locally first before attempting remote integration
+- Use HTTP bridges for remote MCP server access
+- Implement proper error handling in bridge scripts
+
+### Issue: MCP Tools Not Appearing in Claude Desktop
+
+**Problem:** Claude Desktop connects but doesn't show any MCP tools.
+
+**Symptoms:**
+- Connection successful but no tools visible
+- Empty tools list in Claude Desktop
+- "Server ready" logs but no tool registration
+
+**Root Cause:**
+- MCP server not properly implementing `tools/list` method
+- Bridge script not forwarding tool registration correctly
+- JSON-RPC response format issues
+
+**Solution:**
+```bash
+# Test MCP server tools/list method directly
+echo '{"jsonrpc": "2.0", "id": 1, "method": "tools/list"}' | node dist/index.js
+
+# Expected response should include tools array
+{
+  "result": {
+    "tools": [
+      {
+        "name": "weather_current",
+        "description": "Get current weather conditions",
+        "inputSchema": { ... }
+      }
+      // ... more tools
+    ]
+  },
+  "jsonrpc": "2.0",
+  "id": 1
+}
+
+# Verify bridge script preserves all JSON-RPC methods
+# Check that tools/list, tools/call, resources/list are all forwarded
+```
+
+---
+
+## 🌐 GitHub Codespaces Remote Access Issues
+
+### Issue: GitHub CLI Not Installed or Authentication Failures
+
+**Problem:** Cannot set up port forwarding from Codespaces to local machine.
+
+**Symptoms:**
+- "command not found: gh" error
+- "HTTP 403: Must have admin rights to Repository" error
+- Authentication failures with GitHub CLI
+
+**Root Cause:**
+- GitHub CLI not installed on local machine
+- Missing codespace scope in GitHub authentication
+- Insufficient permissions for codespace access
+
+**Solution:**
+```bash
+# Install GitHub CLI via Homebrew (macOS)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zshrc
+eval "$(/opt/homebrew/bin/brew shellenv)"
+brew install gh
+
+# Authenticate with required scopes
+gh auth login
+gh auth refresh -h github.com -s codespace
+
+# Verify authentication
+gh auth status
+
+# List and connect to codespaces
+gh codespace list
+gh codespace ports forward 3003:3003 --codespace $(gh codespace list --json | jq -r '.[0].name')
+```
+
+### Issue: Port Forwarding Connection Drops
+
+**Problem:** Port forwarding tunnel closes unexpectedly when testing MCP connection.
+
+**Symptoms:**
+- Connection established but immediately closes
+- "tunnel closes" messages when testing with netcat
+- Intermittent connectivity to forwarded ports
+
+**Root Cause:**
+- HTTP bridge not properly handling keep-alive connections
+- Codespaces network timeout settings
+- Firewall or network proxy interference
+
+**Solution:**
+```bash
+# Use persistent HTTP connection testing
+curl -X POST http://localhost:3003 \
+  -H "Content-Type: application/json" \
+  -d '{"jsonrpc": "2.0", "id": 1, "method": "tools/list"}'
+
+# Instead of netcat which closes immediately:
+# nc localhost 3003 (NOT recommended for HTTP)
+
+# Monitor port forwarding status
+gh codespace ports --codespace $(gh codespace list --json | jq -r '.[0].name')
+
+# Restart port forwarding if needed
+gh codespace ports forward 3003:3003 --codespace $(gh codespace list --json | jq -r '.[0].name')
+```
+
+### Issue: Backend Server Not Running on Expected Port
+
+**Problem:** MCP server cannot connect to backend API because server isn't running.
+
+**Symptoms:**
+- "Connection refused" errors when testing backend
+- MCP tools return connection timeout errors
+- Backend health check fails
+
+**Root Cause:**
+- Backend server not started
+- Backend running on wrong port
+- TypeScript compilation errors preventing server start
+
+**Solution:**
+```bash
+# Check if backend is running
+curl http://localhost:3001/health
+
+# If not running, check for compilation errors
+cd live-conditions-app/backend
+npm run build
+
+# If build fails, use simple server
+npx ts-node src/simple-server.ts &
+
+# Verify backend is accessible
+curl http://localhost:3001/api/v1/weather/current?city=Sydney&country=AU
+
+# Update MCP server .env file
+echo "BACKEND_API_URL=http://localhost:3001" > ../mcp-server/.env
+echo "API_TIMEOUT=10000" >> ../mcp-server/.env
+
+# Rebuild and test MCP server
+cd ../mcp-server
+npm run build
+echo '{"jsonrpc": "2.0", "id": 1, "method": "tools/call", "params": {"name": "weather_current", "arguments": {"city": "Sydney", "country": "AU"}}}' | node dist/index.js
+```
 
 ---
 

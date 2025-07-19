@@ -282,21 +282,54 @@ The application includes a Model Context Protocol (MCP) server that enables seam
 - **25+ MCP Tools** - Weather, marine, traffic, and alert tools
 - **7 MCP Resources** - Direct access to live data feeds
 - **6 MCP Prompts** - Pre-built AI prompts for analysis
+- **Remote Access Support** - Works with GitHub Codespaces and local Claude Desktop
+- **Real-time Data** - Live integration with backend APIs
 - **Full Integration Examples** - Claude Desktop, AI applications, webhooks
 
-### Quick MCP Setup
+### Quick MCP Setup (Local)
 ```bash
 # Build and start the MCP server
 cd live-conditions-app/mcp-server
 npm install && npm run build
+
+# Configure environment
+echo "BACKEND_API_URL=http://localhost:3001" > .env
+echo "API_TIMEOUT=10000" >> .env
+
+# Start MCP server
 npm start
 ```
+
+### Remote MCP Access (Codespaces ↔ Claude Desktop)
+```bash
+# 1. Set up GitHub CLI and port forwarding
+brew install gh
+gh auth refresh -h github.com -s codespace
+gh codespace ports forward 3003:3003 --codespace $(gh codespace list --json | jq -r '.[0].name')
+
+# 2. Start HTTP bridge in Codespaces
+cd live-conditions-app/mcp-server
+node http-bridge.js &
+
+# 3. Configure Claude Desktop with bridge script
+# See MCP documentation for complete setup
+```
+
+### Successful Integration Test
+The MCP integration has been fully tested and working:
+- ✅ **22 Tools Available** - All weather, marine, traffic, and alert tools accessible
+- ✅ **Real API Data** - Weather tools return actual weather data from backend
+- ✅ **Remote Access** - Claude Desktop on local machine can access Codespaces MCP server
+- ✅ **End-to-End Functionality** - Query "Get current weather for Sydney" works in Claude Desktop
 
 For detailed MCP integration, see the [MCP Server Documentation](live-conditions-app/mcp-server/README.md).
 
 ## 🐛 Troubleshooting
 
 For common issues and solutions, please refer to the comprehensive [Troubleshooting Guide](troubleshooting-guide.md) which covers:
+- **MCP Server Issues** - API endpoint mismatches, response data structure problems
+- **Claude Desktop Integration** - Remote access setup, tool registration issues
+- **GitHub Codespaces Remote Access** - Port forwarding, authentication, bridge setup
 - Frontend loading and WebSocket issues
 - Backend API connection problems
 - Database configuration

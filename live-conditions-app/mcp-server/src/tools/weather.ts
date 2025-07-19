@@ -190,7 +190,7 @@ export const weatherTools = {
     params.append('units', units);
 
     const response = await axios.get(
-      `${env.BACKEND_API_URL}/api/weather/current?${params.toString()}`,
+      `${env.BACKEND_API_URL}/api/v1/weather/current?${params.toString()}`,
       {
         timeout: env.API_TIMEOUT,
         headers: {
@@ -199,7 +199,8 @@ export const weatherTools = {
       }
     );
 
-    const weatherData: WeatherData = response.data;
+    const apiResponse = response.data;
+    const weatherData = apiResponse.data || apiResponse; // Handle both wrapped and unwrapped responses
 
     return {
       content: [
@@ -209,7 +210,7 @@ export const weatherTools = {
             location: weatherData.location,
             current: weatherData.current,
             timestamp: weatherData.timestamp,
-            summary: `Current weather in ${weatherData.location.name}: ${weatherData.current.temperature}°C, ${weatherData.current.condition}. Feels like ${weatherData.current.feelsLike}°C. Humidity: ${weatherData.current.humidity}%, Wind: ${weatherData.current.windSpeed} km/h`,
+            summary: `Current weather in ${weatherData.location.name}: ${weatherData.current.temperature}°C, ${weatherData.current.condition}. Humidity: ${weatherData.current.humidity}%, Wind: ${weatherData.current.windSpeed} km/h`,
           }, null, 2),
         },
       ],
@@ -231,7 +232,7 @@ export const weatherTools = {
     params.append('units', units);
 
     const response = await axios.get(
-      `${env.BACKEND_API_URL}/api/weather/forecast?${params.toString()}`,
+      `${env.BACKEND_API_URL}/api/v1/weather/forecast?${params.toString()}`,
       { timeout: env.API_TIMEOUT }
     );
 
@@ -257,7 +258,7 @@ export const weatherTools = {
     if (severity) params.append('severity', severity);
 
     const response = await axios.get(
-      `${env.BACKEND_API_URL}/api/weather/alerts?${params.toString()}`,
+      `${env.BACKEND_API_URL}/api/v1/alerts?${params.toString()}`,
       { timeout: env.API_TIMEOUT }
     );
 
@@ -292,7 +293,7 @@ export const weatherTools = {
     });
 
     const response = await axios.get(
-      `${env.BACKEND_API_URL}/api/weather/historical?${params.toString()}`,
+      `${env.BACKEND_API_URL}/api/v1/weather/historical?${params.toString()}`,
       { timeout: env.API_TIMEOUT }
     );
 

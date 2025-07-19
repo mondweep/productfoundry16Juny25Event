@@ -100,6 +100,8 @@ A Model Context Protocol (MCP) server that provides seamless integration with th
 
 ### Claude Desktop Integration
 
+#### Local Development
+
 Add the MCP server to your Claude Desktop configuration:
 
 ```json
@@ -109,12 +111,144 @@ Add the MCP server to your Claude Desktop configuration:
       "command": "node",
       "args": ["/path/to/live-conditions-app/mcp-server/dist/index.js"],
       "env": {
-        "BACKEND_API_URL": "http://localhost:5000"
+        "BACKEND_API_URL": "http://localhost:3001"
       }
     }
   }
 }
 ```
+
+#### Remote Access (GitHub Codespaces)
+
+For accessing MCP server running in GitHub Codespaces from local Claude Desktop:
+
+1. **Set up port forwarding:**
+   ```bash
+   # Install GitHub CLI (if needed)
+   brew install gh
+   
+   # Authenticate with codespace scope
+   gh auth refresh -h github.com -s codespace
+   
+   # Forward MCP bridge port
+   gh codespace ports forward 3003:3003 --codespace $(gh codespace list --json | jq -r '.[0].name')
+   ```
+
+2. **Create HTTP bridge in Codespaces:**
+   ```bash
+   cd /workspaces/.../mcp-server
+   
+   # Create http-bridge.js
+   cat > http-bridge.js << 'EOF'
+   const express = require('express');
+   const { spawn } = require('child_process');
+   const app = express();
+   
+   app.use(express.json());
+   
+   app.post('/', async (req, res) => {
+     const mcpProcess = spawn('node', ['dist/index.js'], {
+       stdio: ['pipe', 'pipe', 'pipe']
+     });
+     
+     mcpProcess.stdin.write(JSON.stringify(req.body) + '\n');
+     mcpProcess.stdin.end();
+     
+     let output = '';
+     mcpProcess.stdout.on('data', (data) => output += data);
+     
+     mcpProcess.on('close', () => {
+       try {
+         const response = JSON.parse(output.trim().split('\n').pop());
+         res.json(response);
+       } catch (e) {
+         res.status(500).json({
+           jsonrpc: '2.0',
+           id: req.body.id,
+           error: { code: -32603, message: 'Parse error' }
+         });
+       }
+     });
+   });
+   
+   app.listen(3003, () => console.log('HTTP bridge listening on port 3003'));
+   EOF
+   
+   # Start the bridge
+   node http-bridge.js &
+   ```
+
+3. **Create local bridge script:**
+   ```bash
+   # Create ~/live-conditions-bridge.js
+   cat > ~/live-conditions-bridge.js << 'EOF'
+   const readline = require('readline');
+   const http = require('http');
+   
+   const rl = readline.createInterface({
+     input: process.stdin,
+     output: process.stdout,
+     terminal: false
+   });
+   
+   rl.on('line', (line) => {
+     try {
+       const request = JSON.parse(line);
+       const postData = JSON.stringify(request);
+       
+       const req = http.request({
+         hostname: 'localhost',
+         port: 3003,
+         path: '/',
+         method: 'POST',
+         headers: {
+           'Content-Type': 'application/json',
+           'Content-Length': Buffer.byteLength(postData)
+         }
+       }, (res) => {
+         let data = '';
+         res.on('data', (chunk) => data += chunk);
+         res.on('end', () => {
+           try {
+             const response = JSON.parse(data);
+             console.log(JSON.stringify(response));
+           } catch (e) {
+             console.log(JSON.stringify({
+               jsonrpc: '2.0',
+               id: request.id,
+               error: { code: -32700, message: 'Parse error' }
+             }));
+           }
+         });
+       });
+       
+       req.write(postData);
+       req.end();
+     } catch (e) {
+       console.log(JSON.stringify({
+         jsonrpc: '2.0',
+         id: null,
+         error: { code: -32700, message: 'Invalid JSON' }
+       }));
+     }
+   });
+   EOF
+   ```
+
+4. **Configure Claude Desktop for remote access:**
+   ```json
+   {
+     "mcpServers": {
+       "live-conditions": {
+         "command": "node",
+         "args": ["/Users/username/live-conditions-bridge.js"],
+         "env": {
+           "LOG_LEVEL": "info"
+         }
+       }
+     }
+   }
+   ```
 
 ### Claude Code Integration
 
